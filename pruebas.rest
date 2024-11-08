@@ -1,0 +1,2 @@
+# Obtener todos los posts
+GET http://localhost:3000/api/posts

@@ -1,0 +1,31 @@
+{
+  "name": "blog_actividad8",
+  "version": "1.0.0",
+  "description": "Actividad 8 Máster Full Stack Developer (UNIR)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturocg96/blogActividad8.git"
+  },
+  "author": "Arturo Carrasco González",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arturocg96/blogActividad8/issues"
+  },
+  "homepage": "https://github.com/arturocg96/blogActividad8#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
