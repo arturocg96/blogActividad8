@@ -1,14 +1,11 @@
+require('dotenv').config();
 const http = require('http');
 const app = require('./src/app');
 
-require('dotenv').config();
-
 const server = http.createServer(app);
-
 const PORT = process.env.PORT || 3000;
-server.listen(PORT);
 
-server.on('listening', () => {
+server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
 

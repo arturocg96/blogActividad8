@@ -1,14 +1,31 @@
-const pool = require('../config/db');
+const db = require('../config/db');
 
-const getAllPosts = async () => {
-    const [rows] = await pool.query(`
-        SELECT posts.*, autores.nombre, autores.email, autores.imagen
-        FROM posts
-        LEFT JOIN autores ON posts.autor_id = autores.id
-    `);
-    return rows;
-};
+async function getAll() {
+    const [result] = await db.query(
+        'SELECT posts.*, Autores.nombre AS autor_nombre, Autores.email AS autor_email, Autores.imagen AS autor_imagen FROM posts JOIN Autores ON posts.autor_id = Autores.id'
+    );
+    return result;
+}
 
-module.exports = {
-    getAllPosts,
-};
+async function create(titulo, descripcion, categoria, autor_id) {
+    const [result] = await db.query(
+        'INSERT INTO posts (titulo, descripcion, categoria, autor_id) VALUES (?, ?, ?, ?)',
+        [titulo, descripcion, categoria, autor_id]
+    );
+    return result.insertId;
+}
+
+async function getByAuthor(autor_id) {
+    const [result] = await db.query(
+        'SELECT posts.*, Autores.nombre AS autor_nombre, Autores.email AS autor_email, Autores.imagen AS autor_imagen FROM posts JOIN Autores ON posts.autor_id = Autores.id WHERE posts.autor_id = ?',
+        [autor_id]
+    );
+    return result;
+}
+
+async function getById(id) {
+    const [result] = await db.query('SELECT * FROM posts WHERE id = ?', [id]);
+    return result[0];
+}
+
+module.exports = { getAll, create, getByAuthor, getById };

@@ -1,2 +1,44 @@
-# Obtener todos los posts
-GET http://localhost:3000/api/posts
+@url = http://localhost:3000/api
+
+#####################
+###### Autores ######
+#####################
+
+# Obtener todos los autores
+GET {{url}}/authors
+Content-Type: application/json
+
+###
+# Registrar un nuevo autor
+POST {{url}}/authors
+Content-Type: application/json
+
+{
+    "nombre": "Arturo Carrasco González",
+    "email": "arturocarrascogonzalez@hotmail.com"
+}
+
+#####################
+####### Posts #######
+#####################
+
+# Obtener todos los posts (incluye datos del autor)
+GET {{url}}/posts
+Content-Type: application/json
+
+###
+# Crear un nuevo post asociado a un autor
+POST {{url}}/posts
+Content-Type: application/json
+
+{
+    "titulo": "Desarrollador Backend con Pasión por la Eficiencia",
+    "descripcion": "Soy Arturo Carrasco González, un desarrollador especializado en backend con experiencia en Node.js y MySQL. Comprometido con el código limpio y soluciones eficientes que optimicen el rendimiento de cada proyecto.",
+    "categoria": "Presentación",
+    "autor_id": 1
+}
+
+###
+# Obtener todos los posts de un autor específico por ID de autor
+GET {{url}}/posts/author/1
+Content-Type: application/json
